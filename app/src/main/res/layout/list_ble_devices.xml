@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="match_parent"
+    android:background="@drawable/shape_gray"
+    android:padding="10dp"
+    android:layout_margin="5dp"
+    android:layout_height="wrap_content"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!--开关-->
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/bleswith"
+        android:padding="10dp"
+        android:src="@mipmap/knob1"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true" />
+
+    <!--温度提示文字-->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/currenttmpnull"
+        android:layout_gravity="center_vertical"
+        android:id="@+id/tmp"
+        android:textSize="14dp"
+        android:layout_marginLeft="10dp"
+        android:layout_alignTop="@+id/bleon"
+        android:layout_toEndOf="@+id/bleon" />
+
+    <!--开关状态图-->
+    <ImageView
+        android:layout_width="40dp"
+        android:layout_height="18dp"
+        android:src="@mipmap/bleoff"
+        android:layout_below="@+id/blename"
+        android:layout_alignStart="@+id/blename"
+        android:id="@+id/bleon" />
+
+
+    <!--名称-->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="24dp"
+        android:text="@string/switch4"
+        android:layout_gravity="center_vertical"
+        android:id="@+id/blename"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="20dp" />
+
+    <!--温度设置区域-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:layout_below="@+id/tmp"
+        android:visibility="gone"
+        android:layout_margin="10dp"
+        android:layout_alignParentStart="true"
+        android:id="@+id/ble">
+
+        <!--太阳图片-->
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@mipmap/light"
+            android:id="@+id/light"
+            android:layout_marginRight="20dp"
+            android:layout_toStartOf="@+id/slider" />
+
+        <!--滑动条-->
+        <SeekBar
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/slider"
+            android:max="18"
+            android:layout_centerHorizontal="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/nowtmp"
+            android:text="42°C"
+            />
+
+    </LinearLayout>
+
+</RelativeLayout>

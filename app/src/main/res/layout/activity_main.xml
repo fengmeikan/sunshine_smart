@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.sunshine.smart.activity.MainActivity">
+
+    <include layout="@layout/toolbar"/>
+
+    <FrameLayout
+        android:id="@+id/content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:background="#bfbdbd">
+
+    </FrameLayout>
+
+
+    <RadioGroup
+        android:id="@+id/radiogroup"
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:background="#0b0c0e"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+
+        <RadioButton
+            android:id="@+id/deveces_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:button="@null"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:drawableTop="@mipmap/devices_en"
+            android:drawablePadding="5dip"
+            android:textColor="#fff"
+            android:text="@string/deveces"
+            android:checked="true" />
+
+
+        <RadioButton
+            android:id="@+id/health_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:button="@null"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:drawableTop="@mipmap/health"
+            android:drawablePadding="5dip"
+            android:textColor="#fff"
+            android:text="@string/health"
+            android:checked="false" />
+
+        <RadioButton
+            android:id="@+id/news_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:button="@null"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:drawableTop="@mipmap/news"
+            android:drawablePadding="5dip"
+            android:textColor="#fff"
+            android:text="@string/news"
+            android:checked="false" />
+
+        <RadioButton
+            android:id="@+id/shop_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:button="@null"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:drawableTop="@mipmap/shop"
+            android:drawablePadding="5dip"
+            android:textColor="#fff"
+            android:text="@string/shop"
+            android:checked="false" />
+
+
+
+
+    </RadioGroup>
+
+</LinearLayout>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="gray">#555555</color>
+    <color name="white">#fff</color>
+    <color name="xiwang">#e54135</color>
+    <color name="smart">#494a4b</color>
+    <color name="thingrey">#999999</color>
+    <color name="colorBrown">#B8935C</color>
+</resources>

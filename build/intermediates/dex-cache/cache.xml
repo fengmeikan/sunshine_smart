@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="C:\Users\fff\Desktop\Demo\sunshine_smart\app\libs\ShareSDK-QQ-2.7.4.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="86caa6098a07df4853e607c9d0c2e35723877f78">
+        <dex dex="C:\Users\fff\Desktop\Demo\sunshine_smart\app\build\intermediates\pre-dexed\debug\ShareSDK-QQ-2.7.4_6f4092c40da856297b4e0084273ea4719462eca8.jar" />
+    </item>
+    <item
+        jar="C:\Users\fff\Desktop\Demo\sunshine_smart\app\libs\ShareSDK-Wechat-Moments-2.7.4.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="017864b455f8d5c8ca493f10ee56752c245ca1b2">
+        <dex dex="C:\Users\fff\Desktop\Demo\sunshine_smart\app\build\intermediates\pre-dexed\debug\ShareSDK-Wechat-Moments-2.7.4_bbb2cce0a4d09bea20fd3d6dd6fc49fcfc63bb53.jar" />
+    </item>
+    <item
+        jar="C:\Users\fff\.gradle\caches\modules-2\files-2.1\com.squareup.picasso\picasso\2.3.2\d6b7f0093cec6c9faf65dbfd6a6a345d0ed25e27\picasso-2.3.2.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="d6b7f0093cec6c9faf65dbfd6a6a345d0ed25e27">
+        <dex dex="C:\Users\fff\Desktop\Demo\sunshine_smart\app\build\intermediates\pre-dexed\debug\picasso-2.3.2_7dd0bf6530fdc8d4dcdfe534d02297a33e86f1ea.jar" />
+    </item>
+    <item
+        jar="C:\Users\fff\Desktop\Demo\sunshine_smart\app\build\intermediates\exploded-aar\com.github.vajro\MaterialDesignLibrary\1.6\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="b083f9ed76344c2f2b227c56d597f6d08d3fefc8">
+        <dex dex="C:\Users\fff\Desktop\Demo\sunshine_smart\app\build\intermediates\pre-dexed\debug\com.github.vajro-MaterialDesignLibrary-1.6_303157756e65b845059c6dfc7074ef48c3381ed9.jar" />
+    </item>
+    <item
+        jar="C:\Users\fff\Desktop\Demo\sunshine_smart\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.4.0\jars\libs\internal_impl-23.4.0.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="ea3c07504d2c8f4b13aa17c45c1b68ed9c1c3674">
+        <dex dex="C:\Users\fff\Desktop\Demo\sunshine_smart\app\build\intermediates\pre-dexed\debug\internal_impl-23.4.0_f401b5e2d56ab420f3c5b175568304d9412a4cd4.jar" />
+    </item>
+    <item
+        jar="C:\Users\fff\Desktop\Demo\sunshine_smart\app\libs\ShareSDK-Wechat-Core-2.7.4.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="39363e86a3bf456d6c40df01a1ba378755d3af68">
+        <dex dex="C:\Users\fff\Desktop\Demo\sunshine_smart\app\build\intermediates\pre-dexed\debug\ShareSDK-Wechat-Core-2.7.4_98be1e7ccca9b111e19e307b9dcd02e3f4513a71.jar" />
+    </item>
+    <item
+        jar="C:\Users\fff\Desktop\Demo\sunshine_smart\app\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\23.4.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="ec75036c3c52e451d0cde50a5aedaf5fd32354a0">
+        <dex dex="C:\Users\fff\Desktop\Demo\sunshine_smart\app\build\intermediates\pre-dexed\debug\com.android.support-recyclerview-v7-23.4.0_67470827a505a1313066f5115a3eb39809382ae4.jar" />
+    </item>
+    <item
+        jar="C:\Users\fff\.gradle\caches\modules-2\files-2.1\com.github.dcendents\android-maven-plugin\1.2\95655bd755e3bd8d43af63705f275c750e8b758e\android-maven-plugin-1.2.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="95655bd755e3bd8d43af63705f275c750e8b758e">
+        <dex dex="C:\Users\fff\Desktop\Demo\sunshine_smart\app\build\intermediates\pre-dexed\debug\android-maven-plugin-1.2_31601936bb56ae502c1d1bc7d0305a627cc29de4.jar" />
+    </item>
+    <item
+        jar="C:\Users\fff\.gradle\caches\modules-2\files-2.1\com.nineoldandroids\library\2.4.0\e9b63380f3a242dbdbf103a2355ad7e43bad17cb\library-2.4.0.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="e9b63380f3a242dbdbf103a2355ad7e43bad17cb">
+        <dex dex="C:\Users\fff\Desktop\Demo\sunshine_smart\app\build\intermediates\pre-dexed\debug\library-2.4.0_c0a93bb52a5cb9385f2139e9eee89da44f9428eb.jar" />
+    </item>
+    <item
+        jar="C:\Users\fff\Desktop\Demo\sunshine_smart\app\build\intermediates\exploded-aar\org.xutils\xutils\3.3.36\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="a525a7f2e266f577629f68820a462a807c66eec7">
+        <dex dex="C:\Users\fff\Desktop\Demo\sunshine_smart\app\build\intermediates\pre-dexed\debug\org.xutils-xutils-3.3.36_c2f6d1b7e7bf72f0b7cfa3931f5f1a0ea1e8da95.jar" />
+    </item>
+    <item
+        jar="C:\Users\fff\Desktop\Demo\sunshine_smart\app\libs\MobTools-2016.0707.1708.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="2a583c5b1b67aa1f1b9dbbc658d9e0d185d89dd3">
+        <dex dex="C:\Users\fff\Desktop\Demo\sunshine_smart\app\build\intermediates\pre-dexed\debug\MobTools-2016.0707.1708_22f2ccb9fc226f096653398462d42e27a2f3cb40.jar" />
+    </item>
+    <item
+        jar="C:\Users\fff\Desktop\Demo\sunshine_smart\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.4.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="548f06de403a9409f00554b3ee12a9fdea0e236c">
+        <dex dex="C:\Users\fff\Desktop\Demo\sunshine_smart\app\build\intermediates\pre-dexed\debug\com.android.support-appcompat-v7-23.4.0_bfa021fde3350b42a7f00cf21cf92ed43a6783b9.jar" />
+    </item>
+    <item
+        jar="D:\android\sdk\extras\android\m2repository\com\android\support\support-annotations\23.4.0\support-annotations-23.4.0.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="ffbe55fdb2bb456b1485831706a9eac3300bb6b8">
+        <dex dex="C:\Users\fff\Desktop\Demo\sunshine_smart\app\build\intermediates\pre-dexed\debug\support-annotations-23.4.0_0740e35b1562f687139862cca605a1202e2f94d0.jar" />
+    </item>
+    <item
+        jar="C:\Users\fff\Desktop\Demo\sunshine_smart\app\build\intermediates\exploded-aar\com.github.deano2390\MaterialShowcaseView\1.0.5\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="b7795d74131ee808bbe6e24977804b4720172d4c">
+        <dex dex="C:\Users\fff\Desktop\Demo\sunshine_smart\app\build\intermediates\pre-dexed\debug\com.github.deano2390-MaterialShowcaseView-1.0.5_a67df7ef4603ae424939ec441090e3a9e6a0a85d.jar" />
+    </item>
+    <item
+        jar="C:\Users\fff\Desktop\Demo\sunshine_smart\app\build\intermediates\exploded-aar\com.daimajia.slider\library\1.1.5\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="08962e03b6a954c65d4944e092879b7f5ee1208d">
+        <dex dex="C:\Users\fff\Desktop\Demo\sunshine_smart\app\build\intermediates\pre-dexed\debug\com.daimajia.slider-library-1.1.5_2e5a8f0710b43a2a49726feffe8346d4f69a7990.jar" />
+    </item>
+    <item
+        jar="C:\Users\fff\Desktop\Demo\sunshine_smart\app\build\intermediates\exploded-aar\com.bigkoo\pickerview\2.1.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="cd188cd7d3b1e583d1dc209139de33d5cf593b5a">
+        <dex dex="C:\Users\fff\Desktop\Demo\sunshine_smart\app\build\intermediates\pre-dexed\debug\com.bigkoo-pickerview-2.1.0_c5f359ab6d05d6831b0a08e94905a759185a3690.jar" />
+    </item>
+    <item
+        jar="C:\Users\fff\Desktop\Demo\sunshine_smart\app\libs\MobCommons-2016.0707.1708.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="57eee6c3e8bab2ed4b9a585a7f590808d6518573">
+        <dex dex="C:\Users\fff\Desktop\Demo\sunshine_smart\app\build\intermediates\pre-dexed\debug\MobCommons-2016.0707.1708_a51b9ccc549644477e6537e12b9eb544cd8557f9.jar" />
+    </item>
+    <item
+        jar="C:\Users\fff\Desktop\Demo\sunshine_smart\app\libs\ShareSDK-Core-2.7.4.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="9669deee2fdef4b1dff1d0eb35ad04f55e0d45ab">
+        <dex dex="C:\Users\fff\Desktop\Demo\sunshine_smart\app\build\intermediates\pre-dexed\debug\ShareSDK-Core-2.7.4_c8eea17a6da2340f65e92ccc687699308121f1ff.jar" />
+    </item>
+    <item
+        jar="C:\Users\fff\Desktop\Demo\sunshine_smart\app\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\23.4.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="c2c594cace5d83a3227b2b6e658ecbfd586d3ed9">
+        <dex dex="C:\Users\fff\Desktop\Demo\sunshine_smart\app\build\intermediates\pre-dexed\debug\com.android.support-support-vector-drawable-23.4.0_ce4012eca9776ff70d299e35e2ea8f21272de162.jar" />
+    </item>
+    <item
+        jar="C:\Users\fff\Desktop\Demo\sunshine_smart\app\build\intermediates\exploded-aar\de.hdodenhof\circleimageview\2.1.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="a2af9c72ccaa4c5c049b500ca6ea664a4ce1f7d4">
+        <dex dex="C:\Users\fff\Desktop\Demo\sunshine_smart\app\build\intermediates\pre-dexed\debug\de.hdodenhof-circleimageview-2.1.0_f471bed06d49c15aac1424b58ec351daeeef98ff.jar" />
+    </item>
+    <item
+        jar="C:\Users\fff\Desktop\Demo\sunshine_smart\app\libs\ShareSDK-SinaWeibo-2.7.4.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="3d3ba933400bbf72fe2fd31f3c48b7ecbb56c67f">
+        <dex dex="C:\Users\fff\Desktop\Demo\sunshine_smart\app\build\intermediates\pre-dexed\debug\ShareSDK-SinaWeibo-2.7.4_9a34511a15aed8aec379afbc52349565c95cd891.jar" />
+    </item>
+    <item
+        jar="C:\Users\fff\Desktop\Demo\sunshine_smart\app\build\intermediates\exploded-aar\com.android.support\design\23.4.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="5326d9a850d491714fef8cbfaa9ea3416f0bf0d2">
+        <dex dex="C:\Users\fff\Desktop\Demo\sunshine_smart\app\build\intermediates\pre-dexed\debug\com.android.support-design-23.4.0_336e9a70c75dc904689300b53733f04ffed15d50.jar" />
+    </item>
+    <item
+        jar="C:\Users\fff\Desktop\Demo\sunshine_smart\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.4.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="67bd36ee9340ec7c254108936ad16b24bed160cc">
+        <dex dex="C:\Users\fff\Desktop\Demo\sunshine_smart\app\build\intermediates\pre-dexed\debug\com.android.support-support-v4-23.4.0_ae8cdf219879f33733b5ef3458f1b9a82780ed47.jar" />
+    </item>
+    <item
+        jar="C:\Users\fff\Desktop\Demo\sunshine_smart\app\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\23.4.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="de4db3785756bfb0915a9f59a9b3f2fea7407be4">
+        <dex dex="C:\Users\fff\Desktop\Demo\sunshine_smart\app\build\intermediates\pre-dexed\debug\com.android.support-animated-vector-drawable-23.4.0_969a30fa3c8e3db0f6cccbc2cffe7533ae1cdd95.jar" />
+    </item>
+    <item
+        jar="C:\Users\fff\Desktop\Demo\sunshine_smart\app\libs\ShareSDK-Wechat-2.7.4.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="e690038736ff3d8e8b878c8b057f5e0973557b7b">
+        <dex dex="C:\Users\fff\Desktop\Demo\sunshine_smart\app\build\intermediates\pre-dexed\debug\ShareSDK-Wechat-2.7.4_e145c693ca21676f967c2d8b2959344bd5e0f75b.jar" />
+    </item>
+
+</items>

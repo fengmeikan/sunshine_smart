@@ -1,0 +1,76 @@
+<resources>
+    <string name="app_name">好德利集团</string>
+    <string name="deveces">设备</string>
+    <string name="health">健康</string>
+    <string name="news">资讯</string>
+    <string name="shop">商城</string>
+    <string name="action_settings">设置</string>
+
+    <string name="ok">确定</string>
+    <string name="cancel">取消</string>
+    <string name="home">主页</string>
+    <string name="mydevices">我的设备</string>
+    <string name="profile">个人资料</string>
+    <string name="security">安全中心</string>
+    <string name="settings">系统设置</string>
+    <string name="about">关于</string>
+    <string name="feedback">反馈</string>
+    <string name="username">请登陆</string>
+    <string name="clearcacke">清除缓存</string>
+    <string name="help">帮助</string>
+    <string name="logout">退出登陆</string>
+    <string name="open">开启蓝牙</string>
+    <string name="close">关闭蓝牙</string>
+
+    <string name="switch1">位置1</string>
+    <string name="switch2">位置2</string>
+    <string name="switch3">位置3</string>
+    <string name="switch4">位置4</string>
+    <string name="connectting">连接中</string>
+    <string name="connected">蓝牙设备已连接</string>
+    <string name="noconnect">蓝牙设备未连接</string>
+    <string name="unconnected">蓝牙设备已断开</string>
+    <string name="currenttmp">当前温度:%s°C</string>
+    <string name="currenttmp1">当前温度</string>
+    <string name="currenttmpnull">未获取数据</string>
+    <string name="sensor_abnormal">传感器异常</string>
+
+    <string name="smart_cloths">时尚服饰</string>
+    <string name="smart_yangsheng">健康养生</string>
+    <string name="smart_suit">智能西服</string>
+    <string name="smart_waistcoat">智能马甲</string>
+    <string name="smart_cheongsam">智能旗袍</string>
+    <string name="smart_coat">智能外套</string>
+    <string name="smart_trousers">智能裤子</string>
+
+    <string name="smart_gloves">智能手套</string>
+    <string name="smart_neckguard">智能护颈</string>
+    <string name="smart_waist_support">智能护腰</string>
+    <string name="smart_shoulder">智能护肩</string>
+    <string name="smart_knee">智能护膝</string>
+    <string name="smart_legguard">智能护脚</string>
+
+    <string name="nodevice">当前类型无设备,是否现在去搜索添加?</string>
+    <string name="askdisconnect">您确定要断开连接吗?</string>
+    <string name="nonsupportble">您的手机不支持BLE，请尝试更换手机</string>
+    <string name="connectionprompt">请输入设备密码(默认0000)</string>
+    <string name="unknow_device">未知设备</string>
+    <string name="isconnected">已连接</string>
+    <string name="signal_strength">信号强度</string>
+    <string name="register">注册</string>
+    <string name="country">国家</string>
+    <string name="mobile">手机</string>
+    <string name="verifycode">验证码</string>
+    <string name="password">密码</string>
+    <string name="verifynote">请输入验证码 </string>
+    <string name="mobilenote">请输入手机号码 </string>
+    <string name="passwordnote">请输入密码 </string>
+    <string name="name">Blackgold Ziene</string>
+    <string name="phonelogin">手机号码登录 </string>
+    <string name="qqlogin">QQ账号登录</string>
+    <string name="wblogin">微博账号登录</string>
+    <string name="wxlogin">微信账号登录</string>
+    <string name="exit_again">再次返回退出</string>
+    <string name="title">Blackgold Ziene</string>
+
+</resources>

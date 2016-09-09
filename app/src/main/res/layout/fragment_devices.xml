@@ -1,0 +1,148 @@
+<FrameLayout android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fff"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:id="@+id/clickconnect"
+            android:layout_height="wrap_content">
+
+            <com.gc.materialdesign.views.Switch
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:id="@+id/mainswitch"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentStart="true">
+
+            </com.gc.materialdesign.views.Switch>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:text="@string/unconnected"
+                android:textSize="20dp"
+                android:id="@+id/mainswitchtext"
+                android:layout_marginRight="10dp"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toEndOf="@+id/mainswitch" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/bletimeset"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@+id/blepasswordset"
+                android:padding="10dp"
+                android:src="@android:drawable/ic_menu_recent_history" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/blepasswordset"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:padding="10dp"
+                android:src="@android:drawable/ic_lock_idle_lock" />
+
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/timeSetInfo"
+            android:visibility="gone"
+            android:gravity="center_vertical"
+            android:padding="10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="定时信息:"
+                android:layout_marginRight="20dp"
+                android:id="@+id/textView5"
+                android:layout_centerVertical="true"
+                android:layout_alignParentStart="true" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:textSize="20dp"
+                android:id="@+id/hour"
+                android:layout_centerVertical="true"
+                android:layout_toEndOf="@+id/textView5" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20dp"
+                android:text="0"
+                android:id="@+id/minute"
+                android:layout_centerVertical="true"
+                android:layout_toEndOf="@+id/textView6" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:id="@+id/second"
+                android:textSize="20dp"
+                android:layout_centerVertical="true"
+                android:layout_toEndOf="@+id/textView7" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=":"
+                android:id="@+id/textView6"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_centerVertical="true"
+                android:layout_toEndOf="@+id/hour" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=":"
+                android:id="@+id/textView7"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_centerVertical="true"
+                android:layout_toEndOf="@+id/minute" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:id="@+id/offtimeset"
+                android:text="取消定时"
+                />
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <ListView
+                android:id="@+id/device_listview"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+            </ListView>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+</FrameLayout>
