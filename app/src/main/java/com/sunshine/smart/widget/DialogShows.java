@@ -46,7 +46,7 @@ public class DialogShows extends Dialog implements View.OnClickListener, PickerV
 
     private String unit;
 
-    List<String> list;
+    private List<String> list;
 
     public DialogShows showPackSelect(Context context,List<String> list,String unit, String defselect){
         this.unit = unit;
@@ -109,6 +109,39 @@ public class DialogShows extends Dialog implements View.OnClickListener, PickerV
             }
         });
         ds.setContentView(view,wmlp);
+        ds.show();
+        return ds;
+    }
+
+    private TextView textview;
+
+    public DialogShows showTextDialog(Context context, String display, String title){
+        View view = LayoutInflater.from(context).inflate(R.layout.textview_layout,null,false);
+        LinearLayout pick_layout = (LinearLayout) view.findViewById(R.id.pick_layout);
+        textview = (TextView) view.findViewById(R.id.textview_dialog);
+        textview.setText(display);
+        WindowManager.LayoutParams wmlp = new WindowManager.LayoutParams();
+        wmlp.height = ScreenUtils.getScreenHeight(context)/6;
+        LinearLayout.LayoutParams llp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT);
+        llp.leftMargin = ScreenUtils.getScreenWidth(context)/6;
+        llp.rightMargin = ScreenUtils.getScreenWidth(context)/6;
+        llp.weight = 1;
+        pick_layout.setLayoutParams(llp);
+        view.findViewById(R.id.cancel).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ds.cancel();
+            }
+        });
+        view.findViewById(R.id.submit).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dseil.OnEditInput(ds,"");
+                ds.dismiss();
+            }
+        });
+        ds.setContentView(view, wmlp);
+        ds.setTitle(title);
         ds.show();
         return ds;
     }

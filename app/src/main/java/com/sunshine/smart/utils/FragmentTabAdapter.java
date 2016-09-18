@@ -1,8 +1,7 @@
 package com.sunshine.smart.utils;
 
-
-import android.app.Fragment;
-import android.app.FragmentTransaction;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.RadioGroup;
@@ -30,7 +29,7 @@ public class FragmentTabAdapter implements RadioGroup.OnCheckedChangeListener{
         this.fragmentContentId = fragmentContentId;
 
         // 默认显示第一页
-        FragmentTransaction ft = fragmentActivity.getFragmentManager().beginTransaction();
+        FragmentTransaction ft = fragmentActivity.getSupportFragmentManager().beginTransaction();
         ft.add(fragmentContentId, fragments.get(0));
         ft.commit();
 
@@ -95,7 +94,7 @@ public class FragmentTabAdapter implements RadioGroup.OnCheckedChangeListener{
      * @return
      */
     private FragmentTransaction obtainFragmentTransaction(int index){
-        FragmentTransaction ft = fragmentActivity.getFragmentManager().beginTransaction();
+        FragmentTransaction ft = fragmentActivity.getSupportFragmentManager().beginTransaction();
         // 设置切换动画
 //        if(index > currentTab){
 //            ft.setCustomAnimations(R.animator.slide_left_in, R.animator.slide_left_out);

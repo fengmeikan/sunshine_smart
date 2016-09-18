@@ -173,7 +173,7 @@ public class MyinfoActivity extends BaseActivity implements View.OnClickListener
     public void ClickOK(DialogShows dialog,String selected,String str) {
         HashMap<String,String> param = new HashMap<String,String>();
         param.put("action","User.updateUser");
-        param.put("ID",USER_ID);
+        param.put("is",USER_ID);
         switch (str){
             case "":
                 if ("男".equals(selected)){
@@ -372,7 +372,7 @@ public class MyinfoActivity extends BaseActivity implements View.OnClickListener
             }
             HashMap<String,String> param = new HashMap<String,String>();
             param.put("action","User.updateUser");
-            param.put("ID",USER_ID);
+            param.put("id",USER_ID);
             param.put("icon", Environment.getExternalStorageDirectory() + "/sunshine/icon.png");
             new HttpUtils(this).post(param, 0);
         }
@@ -383,7 +383,7 @@ public class MyinfoActivity extends BaseActivity implements View.OnClickListener
         edit_nicknage.setText(input);
         HashMap<String,String> param = new HashMap<String,String>();
         param.put("action","User.updateUser");
-        param.put("ID",USER_ID);
+        param.put("id",USER_ID);
         param.put("nick", input);
         new HttpUtils(this).post(param, 0);
     }

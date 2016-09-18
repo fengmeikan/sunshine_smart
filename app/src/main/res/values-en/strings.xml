@@ -70,4 +70,9 @@
 	<string name="exit_again">Again to exit</string>
 	<string name="title">Blackgold Ziene</string>
 
+	<string name="update_content">Detected a new version, whether to update</string>
+	<string name="update_title">Update</string>
+
+	<string name="downloading">downloading...</string>
+
 </resources>

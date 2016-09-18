@@ -48,7 +48,7 @@
         <activity android:name=".activity.LoginActivity" />
 
         <service android:name=".Service.BluetoothLeService" />
-
+        <service android:name=".Service.UpdateService" />
         <!-- share sdk -->
         <activity
             android:name="com.mob.tools.MobUIShell"
@@ -92,6 +92,29 @@
         <activity android:name=".activity.DeviceSelectActivity" />
         <activity android:name=".activity.RegsiterActivity" />
         <activity android:name=".activity.MobileLoginActivity"></activity>
+
+        <service
+            android:name=".Service.StepService"
+            android:process="com.sunshine.smart"
+            android:priority="1000">
+            <intent-filter >
+                <!-- 系统启动完成后会调用-->
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+                <action android:name="android.intent.action.DATE_CHANGED"/>
+                <action android:name="android.intent.action.MEDIA_MOUNTED" />
+                <action android:name="android.intent.action.USER_PRESENT" />
+                <action android:name="android.intent.action.ACTION_TIME_TICK" />
+                <action android:name="android.intent.action.ACTION_POWER_CONNECTED" />
+                <action android:name="android.intent.action.ACTION_POWER_DISCONNECTED" />
+            </intent-filter>
+        </service>
+
+        <receiver android:name=".Service.BootCompleteReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+            </intent-filter>
+        </receiver>
+
     </application>
 
 </manifest>

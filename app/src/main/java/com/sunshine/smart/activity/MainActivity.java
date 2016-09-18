@@ -1,6 +1,5 @@
 package com.sunshine.smart.activity;
 
-import android.app.Fragment;
 
 import android.content.ComponentName;
 import android.content.Context;
@@ -8,10 +7,9 @@ import android.content.Intent;
 import android.content.ServiceConnection;
 import android.graphics.Canvas;
 import android.graphics.drawable.Drawable;
-import android.media.Image;
 import android.net.Uri;
 import android.os.IBinder;
-import android.support.v7.app.AppCompatActivity;
+import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -24,10 +22,12 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.RemoteViews;
 import android.widget.Toast;
 
 import com.sunshine.smart.R;
 import com.sunshine.smart.Service.BluetoothLeService;
+import com.sunshine.smart.Service.UpdateService;
 import com.sunshine.smart.SmartApplication;
 import com.sunshine.smart.fragment.DevicesFragment;
 import com.sunshine.smart.fragment.HealthFragment;
@@ -39,8 +39,16 @@ import com.sunshine.smart.lib.SlidingMenu;
 import com.sunshine.smart.lib.app.SlidingFragmentActivity;
 import com.sunshine.smart.utils.Constants;
 import com.sunshine.smart.utils.FragmentTabAdapter;
+import com.sunshine.smart.utils.HttpUtils;
+import com.sunshine.smart.utils.VersionUtils;
+import com.sunshine.smart.widget.DialogShows;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.File;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import uk.co.deanwild.materialshowcaseview.MaterialShowcaseView;
@@ -49,7 +57,7 @@ import uk.co.deanwild.materialshowcaseview.MaterialShowcaseView;
  * Created by huihu on 2016/7/5.
  * 主页面 Fragment
  */
-public class MainActivity extends SlidingFragmentActivity implements NewsFragment.OnFragmentInteractionListener,ShopFragment.OnFragmentInteractionListener {
+public class MainActivity extends SlidingFragmentActivity implements NewsFragment.OnFragmentInteractionListener,ShopFragment.OnFragmentInteractionListener, SmartApplication.xUtilsHttp, DialogShows.EditInputLintener {
 
     private String TAG = MainActivity.class.getName();
     private Fragment fragment1;
@@ -60,6 +68,8 @@ public class MainActivity extends SlidingFragmentActivity implements NewsFragmen
     public static ImageView right_navi;
     public static ProgressBar progressBar;
     private static SlidingMenu sm;
+
+    private String updataURL;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -72,6 +82,13 @@ public class MainActivity extends SlidingFragmentActivity implements NewsFragmen
         initFragment();
         slidingMenu(savedInstanceState);
         initView();
+
+
+        HashMap<String,String> param = new HashMap<String,String>();
+        param.put("action", "System.autoUpdate");
+        param.put("version", VersionUtils.getVersion(this));
+        new HttpUtils(this).post(param, 0);
+
     }
 
     @Override
@@ -104,11 +121,11 @@ public class MainActivity extends SlidingFragmentActivity implements NewsFragmen
 
         // set the Above View Fragment
         if (savedInstanceState != null) {
-            mContent = getFragmentManager().getFragment(savedInstanceState, "mContent");
+            mContent = getSupportFragmentManager().getFragment(savedInstanceState, "mContent");
         }
 
         // set the Behind View Fragment
-        getFragmentManager().beginTransaction().replace(R.id.menu_frame, new MenuFragment()).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.menu_frame, new MenuFragment()).commit();
         // customize the SlidingMenu
         sm = getSlidingMenu();
         sm.setBehindOffsetRes(R.dimen.slidingmenu_offset);
@@ -191,8 +208,8 @@ public class MainActivity extends SlidingFragmentActivity implements NewsFragmen
                         break;
                     case 1:
                         image = getResources().getDrawable(R.mipmap.health_en);
-                        image.setBounds(0,0,image.getIntrinsicWidth(),image.getIntrinsicHeight());
-                        health_btn.setCompoundDrawables(null,image,null,null);
+                        image.setBounds(0, 0, image.getIntrinsicWidth(), image.getIntrinsicHeight());
+                        health_btn.setCompoundDrawables(null, image, null, null);
                         break;
                     case 2:
                         image = getResources().getDrawable(R.mipmap.news_en);
@@ -230,7 +247,7 @@ public class MainActivity extends SlidingFragmentActivity implements NewsFragmen
         }
         if (index != 3 ){
             image = getResources().getDrawable(R.mipmap.shop);
-            image.setBounds(0,0,image.getIntrinsicWidth(),image.getIntrinsicHeight());
+            image.setBounds(0, 0, image.getIntrinsicWidth(), image.getIntrinsicHeight());
             shop_btn.setCompoundDrawables(null,image,null,null);
         }
     }
@@ -308,4 +325,33 @@ public class MainActivity extends SlidingFragmentActivity implements NewsFragmen
         }
         return super.onKeyDown(keyCode, event);
     }
+
+    @Override
+    public void jsonResponse(JSONObject json, int tag) throws JSONException {
+        if (json.getInt("success")==1){
+            updataURL = json.getJSONObject("data").getString("apk_url");
+            DialogShows.getInstance(this).showTextDialog(this, getResources().getString(R.string.update_content), getResources().getString(R.string.update_title)).setEditInputOKLintener(this);
+        }
+    }
+
+    @Override
+    public void jsonResponseError() {
+        Log.e("MainActivity","错误");
+    }
+
+
+    @Override
+    public void OnEditInput(DialogShows dialog, String input) {
+        Intent updateIntent =new Intent(MainActivity.this, UpdateService.class);
+        updateIntent.putExtra("app_name",getResources().getString(R.string.app_name));
+        updateIntent.putExtra("downurl", updataURL);
+        startService(updateIntent);
+    }
+    //开启更新服务UpdateService
+    //这里为了把update更好模块化，可以传一些updateService依赖的值
+    //如布局ID，资源ID，动态获取的标题,这里以app_name为例
+//    Intent updateIntent =new Intent(MainActivity.this, UpdateService.class);
+//    updateIntent.putExtra("app_name",R.string.app_name);
+//    updateIntent.putExtra("downurl", "http://img4.imgtn.bdimg.com/it/u=306400967,4194172527&fm=21&gp=0.jpg");
+//    startService(updateIntent);
 }

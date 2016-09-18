@@ -1,8 +1,9 @@
 package com.sunshine.smart.fragment;
 
-import android.app.Fragment;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import android.content.ServiceConnection;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
@@ -10,6 +11,12 @@ import android.hardware.SensorManager;
 import android.media.Image;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.IBinder;
+import android.os.Message;
+import android.os.Messenger;
+import android.os.RemoteException;
+import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,8 +26,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.sunshine.smart.R;
+import com.sunshine.smart.Service.StepService;
 import com.sunshine.smart.activity.BleScanConnectActivity;
 import com.sunshine.smart.activity.MainActivity;
+import com.sunshine.smart.utils.Constants;
 import com.sunshine.smart.widget.RotateCircle;
 
 /**
@@ -31,7 +40,7 @@ import com.sunshine.smart.widget.RotateCircle;
  * Use the {@link HealthFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class HealthFragment extends Fragment implements View.OnClickListener {
+public class HealthFragment extends Fragment implements View.OnClickListener, Handler.Callback {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -49,6 +58,14 @@ public class HealthFragment extends Fragment implements View.OnClickListener {
     //分别是 距离 热量  时长   体重  身高   年龄
     private TextView distance,heat,duration,weight,height,age;
     private SensorManager mSensorManager;
+
+    //循环取当前时刻的步数中间的间隔时间
+    private long TIME_INTERVAL = 500;
+    private Messenger messenger;
+    private Messenger mGetReplyMessenger = new Messenger(new Handler(this));
+    private Handler delayHandler;
+
+    private boolean isrun = false;
 
     public HealthFragment() {
         // Required empty public constructor
@@ -84,16 +101,61 @@ public class HealthFragment extends Fragment implements View.OnClickListener {
     }
 
     @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        delayHandler = new Handler(this);
+    }
+
+
+    ServiceConnection conn = new ServiceConnection() {
+        @Override
+        public void onServiceConnected(ComponentName name, IBinder service) {
+            messenger = new Messenger(service);
+        }
+
+        @Override
+        public void onServiceDisconnected(ComponentName name) {
+
+        }
+    };
+
+
+    @Override
+    public boolean handleMessage(Message msg) {
+        switch (msg.what) {
+            case Constants.MSG_FROM_SERVER:
+                // 更新界面上的步数
+                steps.setText(msg.getData().getInt("step") + "");
+                delayHandler.sendEmptyMessageDelayed(Constants.REQUEST_SERVER, TIME_INTERVAL);
+                break;
+            case Constants.REQUEST_SERVER:
+                try {
+                    if (isrun){
+                        Message msg1 = Message.obtain(null, Constants.MSG_FROM_CLIENT);
+                        msg1.replyTo = mGetReplyMessenger;
+                        messenger.send(msg1);
+                    }
+                } catch (RemoteException e) {
+                    e.printStackTrace();
+                }
+
+                break;
+        }
+        return false;
+    }
+
+
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_health, container, false);
 
 
-        int h = 480;
-        mYOffset = h * 0.5f;
-        mScale[0] = -(h * 0.5f * (1.0f / (SensorManager.STANDARD_GRAVITY * 2)));
-        mScale[1] = -(h * 0.5f * (1.0f / (SensorManager.MAGNETIC_FIELD_EARTH_MAX)));
+//        int h = 480;
+//        mYOffset = h * 0.5f;
+//        mScale[0] = -(h * 0.5f * (1.0f / (SensorManager.STANDARD_GRAVITY * 2)));
+//        mScale[1] = -(h * 0.5f * (1.0f / (SensorManager.MAGNETIC_FIELD_EARTH_MAX)));
 
 
 
@@ -116,8 +178,19 @@ public class HealthFragment extends Fragment implements View.OnClickListener {
         rotatecircle.setOnClickListener(this);
         runsport.setOnClickListener(this);
 
+    }
 
 
+    private void setupService() {
+        Intent intent = new Intent(getActivity(), StepService.class);
+        getActivity().bindService(intent, conn, Context.BIND_AUTO_CREATE);
+        getActivity().startService(intent);
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        setupService();
     }
 
     @Override
@@ -129,6 +202,7 @@ public class HealthFragment extends Fragment implements View.OnClickListener {
     @Override
     public void onDestroy() {
         super.onDestroy();
+        getActivity().unbindService(conn);
         //关闭
     }
 
@@ -138,6 +212,7 @@ public class HealthFragment extends Fragment implements View.OnClickListener {
             mListener.onFragmentInteraction(uri);
         }
     }
+
 
 
     @Override
@@ -151,16 +226,31 @@ public class HealthFragment extends Fragment implements View.OnClickListener {
         switch (view.getId()){
             case R.id.runsport:
                 if (!rotatecircle.isT()){
-                    Log.e("ttt","开始转");
+                    Log.e("ttt", "开始转");
                     rotatecircle.start(true);
                     runsport.setText("结束运动");
-                    runStart();
-
+//                    runStart();
+                    try {
+                        Message msg = Message.obtain(null, Constants.START_LINTENER);
+                        msg.replyTo = mGetReplyMessenger;
+                        messenger.send(msg);
+                    } catch (RemoteException e) {
+                        e.printStackTrace();
+                    }
+                    isrun = true;
                 }else{
-                    Log.e("ttt","停止转");
+                    Log.e("ttt", "停止转");
                     rotatecircle.start(false);
                     runsport.setText("开始运动");
-                    resetRun();
+//                    resetRun();
+                    try {
+                        Message msg = Message.obtain(null, Constants.STOP_LINTENER);
+                        msg.replyTo = mGetReplyMessenger;
+                        messenger.send(msg);
+                    } catch (RemoteException e) {
+                        e.printStackTrace();
+                    }
+                    isrun = false;
                 }
                 break;
             case R.id.right_navi:
@@ -169,92 +259,92 @@ public class HealthFragment extends Fragment implements View.OnClickListener {
         }
     }
 
-    private void resetRun(){
-        steps.setText("0");
-        duration.setText("00:00:00");
-        if (mSensorManager!=null){
-            mSensorManager.unregisterListener(sensorEventListener);
-        }
-    }
-
-    /**
-     * 开始计步
-     */
-    private void runStart(){
-        mSensorManager = (SensorManager) getActivity().getSystemService(Context.SENSOR_SERVICE);
-        mSensorManager.registerListener(sensorEventListener,mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER),SensorManager.SENSOR_DELAY_FASTEST);
-    }
-
-    public static int CURRENT_SETP = 0;
-    public static float SENSITIVITY = 0;
-    private float mLastValues[] = new float[3 * 2];
-    private float mScale[] = new float[2];
-    private float mYOffset;
-    private static long end = 0;
-    private static long start = 0;
-    private float mLastDirections[] = new float[3 * 2];
-    private float mLastExtremes[][] = { new float[3 * 2], new float[3 * 2] };
-    private float mLastDiff[] = new float[3 * 2];
-    private int mLastMatch = -1;
-
-    private SensorEventListener sensorEventListener = new SensorEventListener() {
-
-        @Override
-        public void onSensorChanged(SensorEvent sensorEvent) {
-            Sensor sensor = sensorEvent.sensor;
-            synchronized (this) {
-                if (sensor.getType() == Sensor.TYPE_ORIENTATION) {
-                } else {
-                    int j = (sensor.getType() == Sensor.TYPE_ACCELEROMETER) ? 1 : 0;
-                    if (j == 1) {
-                        float vSum = 0;
-                        for (int i = 0; i < 3; i++) {
-                            final float v = mYOffset + sensorEvent.values[i] * mScale[j];
-                            vSum += v;
-                        }
-                        int k = 0;
-                        float v = vSum / 3;
-
-
-                        float direction = (v > mLastValues[k] ? 1: (v < mLastValues[k] ? -1 : 0));
-                        if (direction == -mLastDirections[k]) {
-                            // Direction changed
-                            int extType = (direction > 0 ? 0 : 1); // minumum or
-                            // maximum?
-                            mLastExtremes[extType][k] = mLastValues[k];
-                            float diff = Math.abs(mLastExtremes[extType][k]- mLastExtremes[1 - extType][k]);
-
-                            if (diff > SENSITIVITY) {
-                                boolean isAlmostAsLargeAsPrevious = diff > (mLastDiff[k] * 2 / 3);
-                                boolean isPreviousLargeEnough = mLastDiff[k] > (diff / 3);
-                                boolean isNotContra = (mLastMatch != 1 - extType);
-
-                                if (isAlmostAsLargeAsPrevious && isPreviousLargeEnough && isNotContra) {
-                                    end = System.currentTimeMillis();
-                                    if (end - start > 500) {
-                                        Log.i("StepDetector", "CURRENT_SETP:"+ CURRENT_SETP);
-                                        CURRENT_SETP++;
-                                        mLastMatch = extType;
-                                        start = end;
-                                    }
-                                } else {
-                                    mLastMatch = -1;
-                                }
-                            }
-                            mLastDiff[k] = diff;
-                        }
-                        mLastDirections[k] = direction;
-                        mLastValues[k] = v;
-                    }
-                }
-            }
-
-        }
-
-        @Override
-        public void onAccuracyChanged(Sensor sensor, int i) {
-        }
-    };
+//    private void resetRun(){
+//        steps.setText("0");
+//        duration.setText("00:00:00");
+//        if (mSensorManager!=null){
+//            mSensorManager.unregisterListener(sensorEventListener);
+//        }
+//    }
+//
+//    /**
+//     * 开始计步
+//     */
+//    private void runStart(){
+//        mSensorManager = (SensorManager) getActivity().getSystemService(Context.SENSOR_SERVICE);
+//        mSensorManager.registerListener(sensorEventListener,mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER),SensorManager.SENSOR_DELAY_FASTEST);
+//    }
+//
+//    public static int CURRENT_SETP = 0;
+//    public static float SENSITIVITY = 0;
+//    private float mLastValues[] = new float[3 * 2];
+//    private float mScale[] = new float[2];
+//    private float mYOffset;
+//    private static long end = 0;
+//    private static long start = 0;
+//    private float mLastDirections[] = new float[3 * 2];
+//    private float mLastExtremes[][] = { new float[3 * 2], new float[3 * 2] };
+//    private float mLastDiff[] = new float[3 * 2];
+//    private int mLastMatch = -1;
+//
+//    private SensorEventListener sensorEventListener = new SensorEventListener() {
+//
+//        @Override
+//        public void onSensorChanged(SensorEvent sensorEvent) {
+//            Sensor sensor = sensorEvent.sensor;
+//            synchronized (this) {
+//                if (sensor.getType() == Sensor.TYPE_ORIENTATION) {
+//                } else {
+//                    int j = (sensor.getType() == Sensor.TYPE_ACCELEROMETER) ? 1 : 0;
+//                    if (j == 1) {
+//                        float vSum = 0;
+//                        for (int i = 0; i < 3; i++) {
+//                            final float v = mYOffset + sensorEvent.values[i] * mScale[j];
+//                            vSum += v;
+//                        }
+//                        int k = 0;
+//                        float v = vSum / 3;
+//
+//
+//                        float direction = (v > mLastValues[k] ? 1: (v < mLastValues[k] ? -1 : 0));
+//                        if (direction == -mLastDirections[k]) {
+//                            // Direction changed
+//                            int extType = (direction > 0 ? 0 : 1); // minumum or
+//                            // maximum?
+//                            mLastExtremes[extType][k] = mLastValues[k];
+//                            float diff = Math.abs(mLastExtremes[extType][k]- mLastExtremes[1 - extType][k]);
+//
+//                            if (diff > SENSITIVITY) {
+//                                boolean isAlmostAsLargeAsPrevious = diff > (mLastDiff[k] * 2 / 3);
+//                                boolean isPreviousLargeEnough = mLastDiff[k] > (diff / 3);
+//                                boolean isNotContra = (mLastMatch != 1 - extType);
+//
+//                                if (isAlmostAsLargeAsPrevious && isPreviousLargeEnough && isNotContra) {
+//                                    end = System.currentTimeMillis();
+//                                    if (end - start > 500) {
+//                                        Log.i("StepDetector", "CURRENT_SETP:"+ CURRENT_SETP);
+//                                        CURRENT_SETP++;
+//                                        mLastMatch = extType;
+//                                        start = end;
+//                                    }
+//                                } else {
+//                                    mLastMatch = -1;
+//                                }
+//                            }
+//                            mLastDiff[k] = diff;
+//                        }
+//                        mLastDirections[k] = direction;
+//                        mLastValues[k] = v;
+//                    }
+//                }
+//            }
+//
+//        }
+//
+//        @Override
+//        public void onAccuracyChanged(Sensor sensor, int i) {
+//        }
+//    };
 
     /**
      * This interface must be implemented by activities that contain this

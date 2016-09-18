@@ -70,4 +70,9 @@
 	<string name="exit_again">再次返回登出</string>
 	<string name="title">Blackgold Ziene</string>
 
+	<string name="update_content">檢測到新版本，是否更新</string>
+	<string name="update_title">更新</string>
+
+	<string name="downloading">正在下載...</string>
+
 </resources>

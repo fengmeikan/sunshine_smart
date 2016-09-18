@@ -24,6 +24,12 @@ public class Constants {
 
     public static String USER_TOKEN = "auth_user_token";
 
+    public static final int MSG_FROM_CLIENT = 0;//来自activity的消息Handler标志
+    public static final int MSG_FROM_SERVER = 1;//来自服务的消息Handler标志
+    public static final int REQUEST_SERVER = 2;//activity请求服务Handler标志
+    public static final int START_LINTENER = 3;//服务端开始传感器监听标志
+    public static final int STOP_LINTENER = 4;//服务端停止传感器监听标志
+
 
     public static String URL = "webview_url";
     public static String TYPE = "webview_type";

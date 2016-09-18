@@ -70,4 +70,10 @@
 	<string name="exit_again">다시 돌 아 갔 탈퇴</string>
 	<string name="title">Blackgold Ziene</string>
 
+	<string name="update_content">새로 운 버전 을 탐지 됐 는지 됩 니 다</string>
+	<string name="update_title">쇄신</string>
+
+	<string name="downloading">다운 로 드 하 고 있다</string>
+
+
 </resources>
